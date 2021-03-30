@@ -60,15 +60,34 @@ class AdminVoitureController{
 
         require_once("./views/admin/voitures/adminAddV.php");
     }
-    public function removeVoit(){
-        if(isset($_GET["id"]) && $_GET["id"] < 1000 && filter_var($_GET["id"], FILTER_VALIDATE_INT)){
-            $id = trim($_GET["id"]);
-            
-            $nbLine = $this -> advm -> deleteVoit($id);
 
+    // Première méthode de suppression via l'id dans le Controller
+    // public function removeVoit(){
+    //     if(isset($_GET["id"]) && $_GET["id"] < 1000 && filter_var($_GET["id"], FILTER_VALIDATE_INT)){
+    //         $id = trim($_GET["id"]);
+            
+    //         $nbLine = $this -> advm -> deleteVoit($id);
+
+    //         if($nbLine > 0){
+    //             header("location:index.php?action=list_v");
+    //         }
+    //     }
+    // }
+
+    // Autre méthode de suppression via un objet dans le Controller
+    // FILTER_VALIDATE_INT = Pour récupérer un entier
+    // trim = supprime les epsaces
+    public function removeVoit(){
+        if(isset($_GET["id"]) && filter_var($_GET["id"], FILTER_VALIDATE_INT)){
+            $id = $_GET["id"];
+            $delV = new Voiture;
+            $delV->setId_v($id);
+            $nbLine = $this -> advm -> deleteVoit($delV);
+    
             if($nbLine > 0){
-                        header("location:index.php?action=list_v");
+                header("location:index.php?action=list_v");
             }
         }
     }
+
 }

@@ -51,7 +51,7 @@
                 </a>
               </td>
           </tr>
-          <?php }}else{ echo"<tr ><td class='text-center'>".$cars."</td></tr>";} ?>
+          <?php }}else{ echo"<tr class='text-center text-danger'><td colspan='10' >".$cars."</td></tr>";} ?>
       </tbody>
   </table>
 <?php 

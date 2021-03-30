@@ -76,11 +76,19 @@ class AdminVoitureModel extends Driver{
         return $result;
     }
 
-    public function deleteVoit($id){
+    // Première méthode pour supprimer via l'id dans le Model
+    // public function deleteVoit($id){
+    //     $sql = "DELETE FROM voiture WHERE id_v = :id";
+    //     $result = $this -> getRequest($sql, ["id" => $id]);
+    //     $nb = $result -> rowCount();
+    //     return $nb;
+    // }
+
+    // Autre méthode pour supprimer via un objet dans le Model
+    public function deleteVoit(Voiture $voiture){
         $sql = "DELETE FROM voiture WHERE id_v = :id";
-        $result = $this -> getRequest($sql, ["id" => $id]);
-        $nb = $result -> rowCount();
-        return $nb;
-     }
+        $result = $this -> getRequest($sql, ["id" => $voiture -> getId_v()]);
+        return $result->rowCount();
+    }
 
 }
