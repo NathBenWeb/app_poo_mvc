@@ -27,12 +27,8 @@
             <td class="text-center">
                 
                 <?php echo($user->getStatut())
-                    ?'<a href="index.php?action=list_u&id='.$user->getId()."&statut=".$user->getStatut().'" return onclick="confirm(`Etes-vous sûr de vouloir désactiver cet utilisateur?`)" class="btn btn-success"><i class="fas fa-unlock"></i> DESACTIVER</a>'    
-                    :'<a href="index.php?action=list_u&id='.$user->getId()."&statut=".$user->getStatut().'" return onclick="confirm(`Etes-vous sûr de vouloir activer cet utilisateur?`)" class="btn btn-danger"><i class="fas fa-lock"></i> ACTIVER</a>';
-                
-
-                    
-                
+                    ?'<a href="index.php?action=list_u&id='.$user->getId()."&statut=".$user->getStatut().'"onclick="return confirm(`Etes-vous sûr de vouloir désactiver cet utilisateur?`)" class="btn btn-success"><i class="fas fa-unlock"></i> DESACTIVER</a>'    
+                    :'<a href="index.php?action=list_u&id='.$user->getId()."&statut=".$user->getStatut().'"onclick="return confirm(`Etes-vous sûr de vouloir activer cet utilisateur?`)" class="btn btn-danger"><i class="fas fa-lock"></i> ACTIVER</a>';
                 ?>
             </td>
         </tr>
