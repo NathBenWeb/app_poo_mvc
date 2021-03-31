@@ -1,7 +1,4 @@
 <?php
-// require_once("../../models/Driver.php");
-// require_once("../../models/Categorie.php");
-
 // Le modèle permet la gestion des données
 
 class AdminCategorieModel extends Driver{

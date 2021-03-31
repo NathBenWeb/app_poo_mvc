@@ -74,6 +74,7 @@ class AdminVoitureController{
     //     }
     // }
 
+
     // Autre méthode de suppression via un objet dans le Controller
     // FILTER_VALIDATE_INT = Pour récupérer un entier
     // trim = supprime les epsaces
@@ -90,4 +91,53 @@ class AdminVoitureController{
         }
     }
 
+
+    public function editVoit(){
+        if(isset($_GET["id"]) && filter_var($_GET["id"], FILTER_VALIDATE_INT)){
+            $id = $_GET["id"];
+            $editV = new Voiture;
+            $editV->setId_v($id);
+
+            //editCar = variable à integrer dans la view pour appeler la valeur pour l'affichage
+            $editCar = $this -> advm -> voitureItem($editV); 
+      
+
+        // Pour afficher toutes les catégories dans le form-select de la view
+        $tabCat = $this -> adCat  -> getCategories();
+        
+        
+            if(isset($_POST["soumis"]) && !empty($_POST["marque"]) && !empty($_POST["prix"])){
+        
+                $marque = addslashes(htmlspecialchars(trim($_POST["marque"])));
+                $modele = addslashes(htmlspecialchars(trim($_POST["modele"])));
+                $prix = addslashes(htmlspecialchars(trim($_POST["prix"])));
+                $quantite = addslashes(htmlspecialchars(trim($_POST["quantite"])));
+                $annee = addslashes(htmlspecialchars(trim($_POST["annee"])));
+                $id_cat = addslashes(htmlspecialchars(trim($_POST["cat"])));
+                $description = addslashes(htmlspecialchars(trim($_POST["desc"])));
+                $image = $_FILES ["image"]["name"];
+
+                // On va modifier l'objet $editCar créé plus haut dans le premier if
+                $editCar->setMarque($marque);
+                $editCar->setModele($modele);
+                $editCar->setPrix($prix);
+                $editCar->setQuantite($quantite);
+                $editCar->setAnnee($annee);
+                $editCar->getCategorie()->setId_cat($id_cat);
+                $editCar->setDescription($description);
+                $editCar->setImage($image);
+                
+                // Pour pouvoir récupérer une image n'importe où et qu'elle s'importe dans le dossier image une fois téléchargée
+                $destination = "./assets/images/";
+                move_uploaded_file($_FILES["image"]["tmp_name"], $destination.$image);
+
+                $ok = $this->advm->updateVoiture($editCar);
+                // if($ok > 0){
+                    header("location:index.php?action=list_v");
+                // }
+            }
+        
+            require_once("./views/admin/voitures/adminEditV.php");
+        }
+    }
 }

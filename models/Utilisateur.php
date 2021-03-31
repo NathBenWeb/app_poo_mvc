@@ -1,13 +1,19 @@
 <?php
 
-Class Utilisateurs{
+Class Utilisateur{
     private $id;
     private $nom;
     private $prenom;
     private $login;
     private $pass;
     private $email;
+    private $statut;
     private $grade;
+
+    public function __construct(){
+        $this -> grade = new Grade;
+    }
+    
 
     /**
      * Get the value of id
@@ -145,6 +151,26 @@ Class Utilisateurs{
     public function setGrade($grade)
     {
         $this->grade = $grade;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of statut
+     */ 
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    /**
+     * Set the value of statut
+     *
+     * @return  self
+     */ 
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
 
         return $this;
     }

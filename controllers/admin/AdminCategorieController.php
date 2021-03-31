@@ -1,7 +1,4 @@
 <?php
-// require_once("../../models/Driver.php");
-// require_once("../../models/Categorie.php");
-// require_once("../../models/admin/AdminCategorieModel.php");
 
 // Le controller appelle le bon modèle et la bonne vue pour l'affichage
 
@@ -15,7 +12,7 @@ class AdminCategorieController{
 
     public function listCategories(){
         $allCat = $this -> adCat -> getCategories();
-        require_once("./views/admin/adminCategoriesItems.php");
+        require_once("./views/admin/categories/adminCategoriesItems.php");
         // return $allCat;
     }
 
@@ -52,7 +49,7 @@ class AdminCategorieController{
                 header("location:index.php?action=list_cat");
 
             }
-            require_once("./views/admin/adminEditCat.php");
+            require_once("./views/admin/categories/adminEditCat.php");
         }
     }
 
@@ -67,7 +64,7 @@ class AdminCategorieController{
                     header("location:index.php?action=list_cat");
                 }
         }
-        require_once("./views/admin/adminAddCat.php");
+        require_once("./views/admin/categories/adminAddCat.php");
     }
 
 }

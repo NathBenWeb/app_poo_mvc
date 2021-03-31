@@ -40,7 +40,7 @@
               <td ><?=substr($car->getDescription(),0, 19);?></td>
               <td><?=$car->getCategorie()->getNom_cat();?></td>
               <td class="text-center">
-                <a class="btn btn-info" href="#">
+                <a class="btn btn-info" href="index.php?action=edit_v&id=<?= $car->getId_v();?>">
                     <i class="fas fa-pen"></i>
                 </a>
               </td>
