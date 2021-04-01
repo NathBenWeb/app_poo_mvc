@@ -11,6 +11,7 @@ class AdminCategorieController{
     }
 
     public function listCategories(){
+        AuthController::isLogged();
         $allCat = $this -> adCat -> getCategories();
         require_once("./views/admin/categories/adminCategoriesItems.php");
         // return $allCat;
@@ -25,6 +26,8 @@ class AdminCategorieController{
     //     }
     // }
     public function removeCat(){
+        AuthController::isLogged();
+        AuthController::accessUser();
         if(isset($_GET["id"]) && $_GET["id"] < 1000 && filter_var($_GET["id"], FILTER_VALIDATE_INT)){
             $id = trim($_GET["id"]);
             
@@ -37,6 +40,7 @@ class AdminCategorieController{
     }
 
     public function editCat(){
+        AuthController::isLogged();
         if(isset($_GET["id"]) && $_GET["id"] < 1000 && filter_var($_GET["id"], FILTER_VALIDATE_INT)){
 
             $id = trim($_GET["id"]);
@@ -54,6 +58,7 @@ class AdminCategorieController{
     }
 
     public function addCat(){
+        AuthController::isLogged();
         if(isset($_POST["soumis"]) && !empty($_POST["categorie"])){
                 $nom_cat = trim(addslashes((htmlentities($_POST["categorie"]))));
                 $newCat = new Categorie();

@@ -11,6 +11,7 @@ Class Utilisateur{
     private $grade;
 
     public function __construct(){
+        
         $this -> grade = new Grade;
     }
     

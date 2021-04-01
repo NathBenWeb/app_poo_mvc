@@ -53,7 +53,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-secondary text-warning col-12 mt-3" name="soumis">Ajouter</button>
+                <button type="submit" class="btn btn-secondary text-warning col-12 mt-3" name="soumis" style="border-radius: 30px;">Ajouter</button>
             </form>
         </div>
     </div>

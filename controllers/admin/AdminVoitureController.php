@@ -9,7 +9,7 @@ class AdminVoitureController{
     }
 
     public function listVoitures(){
-        
+        AuthController::isLogged();
         // Ici in dit si on trouve la recherche faire la recherche sinon rester en mode affichage de la liste
         if(isset($_POST["soumis"]) && !empty($_POST["search"])){
 
@@ -25,7 +25,7 @@ class AdminVoitureController{
     }
 
     public function addVoitures(){
-        
+        AuthController::isLogged();
         if(isset($_POST["soumis"]) && !empty($_POST["marque"]) && !empty($_POST["prix"])){
     
             $marque = addslashes(htmlspecialchars(trim($_POST["marque"])));
@@ -79,6 +79,8 @@ class AdminVoitureController{
     // FILTER_VALIDATE_INT = Pour récupérer un entier
     // trim = supprime les epsaces
     public function removeVoit(){
+        AuthController::isLogged();
+        AuthController::accessUser();
         if(isset($_GET["id"]) && filter_var($_GET["id"], FILTER_VALIDATE_INT)){
             $id = $_GET["id"];
             $delV = new Voiture;
@@ -91,8 +93,8 @@ class AdminVoitureController{
         }
     }
 
-
     public function editVoit(){
+        AuthController::isLogged();
         if(isset($_GET["id"]) && filter_var($_GET["id"], FILTER_VALIDATE_INT)){
             $id = $_GET["id"];
             $editV = new Voiture;
@@ -100,11 +102,9 @@ class AdminVoitureController{
 
             //editCar = variable à integrer dans la view pour appeler la valeur pour l'affichage
             $editCar = $this -> advm -> voitureItem($editV); 
-      
 
         // Pour afficher toutes les catégories dans le form-select de la view
         $tabCat = $this -> adCat  -> getCategories();
-        
         
             if(isset($_POST["soumis"]) && !empty($_POST["marque"]) && !empty($_POST["prix"])){
         

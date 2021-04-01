@@ -69,7 +69,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-secondary text-warning col-12 mt-3" name="soumis">Modifier</button>
+                <button type="submit" class="btn btn-secondary text-warning col-12 mt-3" name="soumis" style="border-radius: 30px;">Modifier</button>
             </form>
         </div>
     </div>

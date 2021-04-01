@@ -14,9 +14,14 @@
   <a href="#services">Services</a>
   <a href="#clients">Clients</a>-->
    
-
+  <h1 class="text-center text-white">BuyCar</h1>
   <div class="text-center"><i class="fa fa-car fa-3x text-danger"></i></div>
-  <a href="#contact"><i class="fas fa-sign-out-alt text-white"></i>Deconnexion</a>
+
+  <?php if(isset($_SESSION["Auth"])){?>
+  <!-- <a href="index.php?action=login"><i class="fas fa-sign-out-alt text-white"></i>Connexion</a> -->
+  <h5 class="text-white text-center mt-3 mb-3">Bonjour <?php if(isset($_SESSION["Auth"])) echo $_SESSION["Auth"]->prenom;?></h5>
+    <a href="index.php?action=logout"><i class="fas fa-key text-white"></i>Déconnexion</a>
+
   <button class="dropdown-btn"><i class="fas fa-layer-group text-white"></i>Catégories
     <i class="fa fa-caret-down"></i>
   </button>
@@ -32,29 +37,36 @@
     <a href="index.php?action=add_v"><i class="fas fa-plus text-white"></i>Ajout</a>
     <a href="index.php?action=list_v"><i class="fas fa-list text-white"></i>Liste</a>
   </div>
-
+  
+  <!-- Si la session de l'utilisateur est autre qu'un grade 3 alors à accès à ce qui suit (donc grade 3 (user) n'a pas accès) -->
+  <?php if($_SESSION["Auth"]->id_g != 3){?> 
   <button class="dropdown-btn"><i class="fas fa-user-graduate text-white"></i>Grades 
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="#"><i class="fas fa-plus text-white"></i>Ajout</a>
-    <a href="#"><i class="fas fa-list text-white"></i>Liste</a>
+    <a href="index.php?action=add_g"><i class="fas fa-plus text-white"></i>Ajout</a>
+    <a href="index.php?action=list_g"><i class="fas fa-list text-white"></i>Liste</a>
   </div>
-
+  
   <button class="dropdown-btn"><i class="fas fa-users text-white"></i>Utilisateurs 
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="#"><i class="fa fa-registered text-white" aria-hidden="true"></i> Inscription</a>
-    <a href="#"><i class="fas fa-key text-white"></i>Connexion</a>
+  <?php if($_SESSION["Auth"]->id_g == 1){?> 
+    <a href="index.php?action=register"><i class="fa fa-registered text-white" aria-hidden="true"></i>Inscription</a>
+    <?php } ?>
+    <!-- <a href="index.php?action=login"><i class="fas fa-key text-white"></i>Connexion</a> -->
     <a href="index.php?action=list_u"><i class="fa fa-list text-white" aria-hidden="true"></i> Liste</a>
   </div>
-
+  <?php }} ?>
   <!-- <a href="#contact">Search</a> -->
 </div>
+
 <div class="container mt-5">
     <div class="main">
-        <h1 class="bg-secondary text-center text-warning">ADMINISTRATION</h1>
+        <h1 class="bg-secondary text-center text-warning" style="border-radius: 30px;">ADMINISTRATION</h1>
+        
+        
         <?= $contenu; ?>
     </div>
 </div>

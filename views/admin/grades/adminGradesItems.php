@@ -1,10 +1,6 @@
-
-<!-- La view permet l'affichage
-Sert à mémoriser des données et ne pas les afficher tout de suite. Et en le rappelant il affichera ce qui aura été intégré dedans -->
 <?php ob_start(); ?>
 
-<!-- <div class=""><a class="btn btn-secondary" href="index.php?action=ajout_cat&id="><i class="text-warning fas fa-plus-square"></i></a></div> -->
-<h2 class="text-center text-decoration-underline mb-4 mt-4">Liste des catégories</h2>
+<h2 class="text-center text-decoration-underline mb-4 mt-4">Liste des grades</h2>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -14,19 +10,19 @@ Sert à mémoriser des données et ne pas les afficher tout de suite. Et en le r
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($allCat as $cat){?>
+        <?php foreach ($allGrade as $grade){?>
 
             
         <tr>
-            <td><?=$cat->getId_cat();?></td>
-            <td><?=$cat->getNom_cat();?></td>
+            <td><?=$grade->getId_g();?></td>
+            <td><?=$grade->getNom_g();?></td>
             <td class="text-center">
-                <a class="btn btn-info" href="index.php?action=edit_cat&id=<?= $cat->getId_cat();?>">
+                <a class="btn btn-info" href="index.php?action=edit_g&id=<?= $grade->getId_g();?>">
                 <i class="fas fa-pen"></i></a>
             </td>
             <?php if($_SESSION["Auth"]->id_g !=3){?>
             <td class="text-center">
-                <a class="btn btn-danger" href="index.php?action=delete_cat&id=<?= $cat->getId_cat();?>"
+                <a class="btn btn-danger" href="index.php?action=delete_g&id=<?= $grade->getId_g();?>"
                 onclick="return confirm('Etes-vous sûr de vouloir supprimer')">
                 <i class="fas fa-trash"></i></a>
             </td>

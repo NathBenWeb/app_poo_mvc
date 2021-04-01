@@ -1,17 +1,21 @@
 <?php
 
-require_once("./models/Driver.php");
-require_once("./models/Categorie.php");
-require_once("./models/Voiture.php");
-require_once("./models/Grade.php");
-require_once("./models/Utilisateur.php");
-require_once("./models/admin/AdminCategorieModel.php");
-require_once("./controllers/admin/AdminCategorieController.php");
-require_once("./models/admin/AdminVoitureModel.php");
-require_once("./controllers/admin/AdminVoitureController.php");
-require_once("./models/admin/AdminUtilisateurModel.php");
-require_once("./controllers/admin/AdminUtilisateurController.php");
+// require_once("./models/Driver.php");
+// require_once("./models/Categorie.php");
+// require_once("./models/Voiture.php");
+// require_once("./models/Grade.php");
+// require_once("./models/Utilisateur.php");
+// require_once("./models/admin/AdminCategorieModel.php");
+// require_once("./controllers/admin/AdminCategorieController.php");
+// require_once("./models/admin/AdminVoitureModel.php");
+// require_once("./controllers/admin/AdminVoitureController.php");
+// require_once("./models/admin/AdminUtilisateurModel.php");
+// require_once("./controllers/admin/AdminUtilisateurController.php");
+// require_once("./models/admin/AdminGradeModel.php");
+// require_once("./controllers/admin/AdminGradeController.php");
+// require_once("./controllers/admin/AuthController.php");
 
+    require_once("./app/autoload.php");
 
 // function chargerClasse($classe){
 //     require $classe . ".php" ;
@@ -24,11 +28,13 @@ class Router{
     private $ctrca;
     private $ctrv;
     private $ctru;
+    private $ctrg;
 
     public function __construct(){
         $this->ctrca = new AdminCategorieController();
         $this->ctrv = new AdminVoitureController();
         $this->ctru = new AdminUtilisateurController();
+        $this->ctrg = new AdminGradeController();
     }
 
     // getPath = Pour aller chercher le bon controller
@@ -36,7 +42,7 @@ class Router{
         if(isset($_GET["action"])){
             switch($_GET["action"]){
                 case "list_cat" :
-                    $this->ctrca->listCategories();
+                    $this->ctrca->listCategories(); // Ici on appelle la méthode du controlleur
                     break;
                 case "delete_cat" :
                     // if(isset($_GET["id"]) && $_GET["id"] < 1000 && filter_var($_GET["id"], FILTER_VALIDATE_INT)){
@@ -64,7 +70,28 @@ class Router{
                     $this->ctrv->editVoit();
                     break;
                 case "list_u" :
-                    $this->ctru->listUsers(); // Ici on appelle la méthode du controlleur
+                    $this->ctru->listUsers(); 
+                    break;
+                case "login" :
+                    $this->ctru->login();
+                    break;
+                case "logout" :
+                    AuthController::logout(); // Méthode appelée via la class car méthode statique
+                    break;
+                case "register" :
+                    $this->ctru->addUser();
+                    break;
+                case "list_g" :
+                    $this->ctrg->listGrades();
+                    break;
+                case "edit_g" :
+                    $this->ctrg->editGrade();
+                    break;
+                case "add_g" :
+                    $this->ctrg->addGrade();
+                    break;
+                case "delete_g" :
+                    $this->ctrg->removeGrade();
                     break;
             }
         }

@@ -10,7 +10,9 @@
             <th>Login</th>
             <th>Email</th>
             <th>Grade</th>
+            <?php if($_SESSION["Auth"]->id_g == 1){?>
             <th colspan="2" class="text-center">Action</th>
+            <?php }?>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +26,7 @@
             <td><?=$user->getLogin();?></td>
             <td><?=$user->getEmail();?></td>
             <td><?=$user->getGrade()->getNom_g();?></td>
+            <?php if($_SESSION["Auth"]->id_g == 1){?> 
             <td class="text-center">
                 
                 <?php echo($user->getStatut())
@@ -31,6 +34,7 @@
                     :'<a href="index.php?action=list_u&id='.$user->getId()."&statut=".$user->getStatut().'"onclick="return confirm(`Etes-vous sûr de vouloir activer cet utilisateur?`)" class="btn btn-danger"><i class="fas fa-lock"></i> ACTIVER</a>';
                 ?>
             </td>
+            <?php }?>
         </tr>
         <?php }?>
     </tbody>
