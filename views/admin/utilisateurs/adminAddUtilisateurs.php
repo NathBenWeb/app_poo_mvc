@@ -18,7 +18,7 @@
                     <div class="col">
                         <label for="grade">Grade</label>
                         <select id="grade" name="grade" class="form-select">
-                            <option value="">Choisir</option>
+                            <!-- <option value="">Choisir</option> -->
                             <?php foreach ($tabGrade  as $grade) {; ?>
                             <option value="<?=$grade->getId_g();?>"><?=$grade->getNom_g();?></option>
                             <?php }; ?>
@@ -51,7 +51,7 @@
                     </div>
                 </div> -->
 
-                <button type="submit" class="btn btn-secondary text-warning col-12 mt-3" name="soumis" style="border-radius: 30px;">Ajouter</button>
+                <button type="submit" class="btn btn-dark text-warning col-12 mt-3" name="soumis" style="border-radius: 30px;">Ajouter</button>
             </form>
         </div>
     </div>

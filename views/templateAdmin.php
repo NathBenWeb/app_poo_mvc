@@ -64,7 +64,7 @@
 
 <div class="container mt-5">
     <div class="main">
-        <h1 class="bg-secondary text-center text-warning" style="border-radius: 30px;">ADMINISTRATION</h1>
+        <h1 class="bg-dark text-center text-warning" style="border-radius: 30px;">ADMINISTRATION</h1>
         
         
         <?= $contenu; ?>

@@ -18,7 +18,7 @@
                     <input type="password" id="pass" name="pass" class="form-control mt-3" placeholder="Veuillez entrez votre mot de passe">
                 </div>
                 
-                <button type="submit" class="btn btn-secondary text-warning col-12 mt-2" name="soumis">Se connecter</button>
+                <button type="submit" class="btn btn-dark text-warning col-12 mt-2" name="soumis">Se connecter</button>
             </form>
         </div>
     </div>

@@ -4,7 +4,7 @@ class AdminGradeModel extends Driver{
 
     public function getGrades(){
 
-        $sql = "SELECT * FROM grade";
+        $sql = "SELECT * FROM grade ORDER BY id_g DESC";
 
         $result = $this->getRequest($sql);
 

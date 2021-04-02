@@ -15,7 +15,7 @@
                         <input type="text" id="categorie" name="categorie" class="form-control" value="<?=$cat->getNom_cat();?>">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-secondary text-warning col-12 mt-4" name="soumis" style="border-radius: 30px;">Modifier</button>
+                <button type="submit" class="btn btn-dark text-warning col-12 mt-4" name="soumis" style="border-radius: 30px;">Modifier</button>
             </form>
         </div>
     </div>

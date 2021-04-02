@@ -29,12 +29,14 @@ class Router{
     private $ctrv;
     private $ctru;
     private $ctrg;
+    private $ctrpub;
 
     public function __construct(){
         $this->ctrca = new AdminCategorieController();
         $this->ctrv = new AdminVoitureController();
         $this->ctru = new AdminUtilisateurController();
         $this->ctrg = new AdminGradeController();
+        $this->ctrpub = new PublicController();
     }
 
     // getPath = Pour aller chercher le bon controller
@@ -93,7 +95,15 @@ class Router{
                 case "delete_g" :
                     $this->ctrg->removeGrade();
                     break;
+                case "checkout" :
+                    $this->ctrpub->recap();
+                    break;
+                case "order" :
+                    $this->ctrpub->orderCar();
+                    break;
             }
+        }else{
+            $this -> ctrpub -> getPubVoitures();
         }
     }
 }

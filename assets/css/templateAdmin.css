@@ -61,6 +61,7 @@ body {
   padding-right: 8px;
 }
 
+
 /* Some media queries for responsiveness */
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}

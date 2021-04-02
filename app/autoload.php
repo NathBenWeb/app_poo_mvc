@@ -11,7 +11,7 @@
 // });
 
 // AUTRE SYNTAXE autoload
-spl_autoload_register("chargement");
+
 function chargement($class){
     $tabFiles = ["./models/$class.php", "./models/admin/$class.php", "./models/public/$class.php","./controllers/$class.php", "./controllers/admin/$class.php", "./controllers/public/$class.php"];
 
@@ -21,3 +21,4 @@ function chargement($class){
         }
     }
 }
+spl_autoload_register("chargement");
